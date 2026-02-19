@@ -16,6 +16,25 @@
     </div>
 
     <div class="right-panel">
+            <h3>Weather Forecast ({{ request.user.farmerprofile.district }})</h3>
+    <ul>
+        {% for w in weather_forecast %}
+            <li>{{ w.date }} - {{ w.weather }} | Temp: {{ w.temp }}°C | Rain: {{ w.rain }} mm</li>
+        {% empty %}
+            <li>No weather data available.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Market Prices</h3>
+    <ul>
+        {% for price in market_prices %}
+            <li>{{ price.crop }} - {{ price.mandi }}: ₹{{ price.price }}</li>
+        {% empty %}
+            <li>No market data available.</li>
+        {% endfor %}
+    </ul>
+
+
         <h3>Your Queries</h3>
         <a href="/farmer/submit-query/" class="btn">Submit New Query</a>
         <div class="query-list">
