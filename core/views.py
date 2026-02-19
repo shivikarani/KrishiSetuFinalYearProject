@@ -9,6 +9,8 @@ from .utils import get_market_prices
 from twilio.twiml.voice_response import VoiceResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.http import JsonResponse
+from .utils import chatbot_response
 # Create your views here.
 
 # Authentication Module
@@ -180,3 +182,12 @@ def ivr_save_recording(request):
     resp = VoiceResponse()
     resp.say("Thank you! Your query has been recorded. Our expert will respond soon.", voice='alice')
     return HttpResponse(str(resp), content_type='text/xml')
+
+
+@csrf_exempt
+@login_required
+def chatbot(request):
+    if request.method == 'POST':
+        user_message = request.POST.get('message')
+        bot_reply = chatbot_response(user_message)
+        return JsonResponse({'reply': bot_reply})

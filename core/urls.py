@@ -10,5 +10,6 @@ urlpatterns = [
     path('notifications/mark-read/<int:notif_id>/', views.mark_notification_read),
     path('ivr/', views.ivr),
     path('ivr/save-recording/', views.ivr_save_recording),
+    path('chatbot/', views.chatbot),
 
 ]

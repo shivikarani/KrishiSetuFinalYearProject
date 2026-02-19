@@ -32,3 +32,20 @@ def get_market_prices(crop_name=None):
                 prices.append(item)
     return prices
 
+
+
+# Simple example using a keyword-based approach
+def chatbot_response(user_message):
+    faq = {
+        "wheat": "Wheat should be sown in November-December in North India.",
+        "rice": "Rice requires 150-200 days for full growth.",
+        "fertilizer": "Apply 20kg nitrogen per hectare for wheat.",
+        "pest": "Use neem-based pesticide to control pests."
+    }
+
+    message = user_message.lower()
+    for key, response in faq.items():
+        if key in message:
+            return response
+    return "Sorry, our experts will respond soon. You can also submit your query."
+
