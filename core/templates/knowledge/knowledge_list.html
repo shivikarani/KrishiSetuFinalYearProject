@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Knowledge Base</h2>
+
+<div class="filters">
+    <form method="get">
+        <select name="category">
+            <option value="">All Categories</option>
+            {% for cat in categories %}
+                <option value="{{ cat.id }}">{{ cat.name }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="text" name="crop" placeholder="Search Crop">
+        <button type="submit" class="btn">Filter</button>
+    </form>
+</div>
+
+<div class="article-list">
+    {% for article in articles %}
+        <div class="card">
+            <h3><a href="/knowledge/{{ article.id }}/">{{ article.title }}</a></h3>
+            <p>Crop: {{ article.crop }} | Category: {{ article.category.name }}</p>
+            <p>{{ article.content|truncatechars:150 }}</p>
+        </div>
+    {% empty %}
+        <p>No articles found.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

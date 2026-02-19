@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KrishiSetu</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">KrishiSetu</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard/">Dashboard</a></li>
+        <li><a href="/knowledge/">Knowledge</a></li>
+        <li><a href="/login/">Login</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

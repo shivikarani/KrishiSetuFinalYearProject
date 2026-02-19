@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Respond to Query</h2>
+<h3>{{ query.title }}</h3>
+<p>{{ query.description }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <textarea name="response_text" rows="5" placeholder="Write your response"></textarea><br>
+    <button type="submit" class="btn">Send Response</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>{{ article.title }}</h2>
+<p>Crop: {{ article.crop }} | Category: {{ article.category.name }}</p>
+<hr>
+<div>
+    {{ article.content|linebreaks }}
+</div>
+
+<a href="/knowledge/" class="btn">Back to Knowledge Base</a>
+
+{% endblock %}

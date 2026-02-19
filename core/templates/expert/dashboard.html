@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Welcome, {{ request.user.username }} (Expert)</h2>
+
+<div class="query-list">
+    {% for query in queries %}
+        <div class="card">
+            <strong>{{ query.title }}</strong> - {{ query.status }} <br>
+            Farmer: {{ query.farmer.username }} | Crop: {{ query.crop }}<br>
+            <a href="/expert/query/{{ query.id }}/">Respond</a>
+        </div>
+    {% empty %}
+        <p>No pending queries.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
