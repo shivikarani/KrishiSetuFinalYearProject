@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import *
 from django.contrib.auth.decorators import login_required
 from django.forms import modelformset_factory
-from django.forms import QueryForm
+from .forms import QueryForm, QueryMediaForm
 from .utils import get_weather
 from .utils import get_market_prices
 from twilio.twiml.voice_response import VoiceResponse
