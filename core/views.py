@@ -73,9 +73,8 @@ def submit_query(request):
             query.save()
             
             for media_form in formset.cleaned_data:
-                if media_form:
-                    file = media_form['file']
-                    QueryMedia.objects.create(query=query, file=file)
+                if media_form and 'file' in media_form:
+                    QueryMedia.objects.create(query=query, file=media_form['file'])
             
             return redirect('/dashboard/')
     else:

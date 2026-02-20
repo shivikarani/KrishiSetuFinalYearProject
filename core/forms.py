@@ -7,11 +7,12 @@ class QueryForm(forms.ModelForm):
         fields = ['title', 'description', 'crop']
 
 class QueryMediaForm(forms.ModelForm):
-    file = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
     class Meta:
         model = QueryMedia
         fields = ['file']
-
+        widgets = {
+            'file': forms.ClearableFileInput(),  # no 'multiple' here
+        }
 
 from .models import Article
 
