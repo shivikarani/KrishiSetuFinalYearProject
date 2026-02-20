@@ -11,6 +11,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import JsonResponse
 from .utils import chatbot_response
+
+from .forms import CropImageForm
+from .ml_model import predict_disease
+from django.core.files.storage import FileSystemStorage
 # Create your views here.
 
 # Authentication Module
@@ -190,3 +194,50 @@ def chatbot(request):
         user_message = request.POST.get('message')
         bot_reply = chatbot_response(user_message)
         return JsonResponse({'reply': bot_reply})
+    
+
+
+
+# crop image
+
+
+
+
+@login_required
+def crop_disease(request):
+    result = None
+    if request.method == 'POST':
+        form = CropImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            img = form.cleaned_data['image']
+            fs = FileSystemStorage()
+            filename = fs.save(img.name, img)
+            filepath = fs.path(filename)
+            
+            disease, confidence = predict_disease(filepath)
+            result = {'disease': disease, 'confidence': round(confidence*100,2)}
+    else:
+        form = CropImageForm()
+    
+    return render(request, 'farmer/crop_disease.html', {'form': form, 'result': result})
+
+
+
+# decorators
+
+from .decorators import role_required
+
+@login_required
+@role_required('farmer')
+def farmer_dashboard(request):
+    ...
+    
+@login_required
+@role_required('expert')
+def expert_dashboard(request):
+    ...
+    
+@login_required
+@role_required('admin')
+def admin_panel(request):
+    ...

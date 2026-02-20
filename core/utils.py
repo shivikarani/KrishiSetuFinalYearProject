@@ -49,3 +49,12 @@ def chatbot_response(user_message):
             return response
     return "Sorry, our experts will respond soon. You can also submit your query."
 
+
+
+from pyfcm import FCMNotification
+
+FCM_API_KEY = 'YOUR_FIREBASE_SERVER_KEY'
+push_service = FCMNotification(api_key=FCM_API_KEY)
+
+def send_push_notification(token, title, message):
+    push_service.notify_single_device(registration_id=token, message_title=title, message_body=message)

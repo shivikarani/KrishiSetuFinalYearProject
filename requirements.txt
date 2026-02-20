@@ -3,3 +3,5 @@ pip install mysqlclient
 pip install pillow
 pip install djangorestframework-simplejwt
 pip install django-cors-headers
+pip install pyfcm
+pip install tensorflow

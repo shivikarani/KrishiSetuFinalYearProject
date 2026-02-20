@@ -20,3 +20,8 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ['title', 'content', 'category', 'crop']
+
+
+
+class CropImageForm(forms.Form):
+    image = forms.ImageField()

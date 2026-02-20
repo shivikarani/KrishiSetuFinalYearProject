@@ -28,3 +28,20 @@ function sendMessage() {
 
     document.getElementById('user_message').value = '';
 }
+
+
+document.querySelectorAll('.article-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const content = card.querySelector('.article-content');
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+});
+
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e){
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({behavior: 'smooth'});
+    });
+});

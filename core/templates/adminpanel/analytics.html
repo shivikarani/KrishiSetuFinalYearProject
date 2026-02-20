@@ -1,0 +1,16 @@
+<canvas id="queryChart" width="400" height="200"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('queryChart').getContext('2d');
+const queryChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ states|safe }},
+        datasets: [{
+            label: 'Queries per State',
+            data: {{ query_counts|safe }},
+            backgroundColor: 'rgba(46, 125, 50, 0.6)'
+        }]
+    }
+});
+</script>

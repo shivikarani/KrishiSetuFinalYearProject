@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Crop Disease Detection</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Upload & Detect</button>
+</form>
+
+{% if result %}
+    <h3>Prediction Result</h3>
+    <p>Disease: {{ result.disease }}</p>
+    <p>Confidence: {{ result.confidence }}%</p>
+{% endif %}
+
+{% endblock %}

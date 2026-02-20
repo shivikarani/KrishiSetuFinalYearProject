@@ -11,5 +11,6 @@ urlpatterns = [
     path('ivr/', views.ivr),
     path('ivr/save-recording/', views.ivr_save_recording),
     path('chatbot/', views.chatbot),
+    path('crop-disease/', views.crop_disease),
 
 ]

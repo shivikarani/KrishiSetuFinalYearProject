@@ -47,3 +47,20 @@ body {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+
+/* Mobile-friendly layout */
+@media screen and (max-width: 768px){
+    .dashboard-container {
+        flex-direction: column;
+    }
+    
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .card {
+        margin: 10px 0;
+    }
+}
